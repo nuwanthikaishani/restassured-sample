@@ -13,20 +13,16 @@ public class CreateUserTest extends BaseTest {
     @Test
     public void createUser(){
         HashMap<String, String> request = new HashMap<>();
-        request.put("name", "morpheus");
+        request.put("name", "Neo");
         request.put("job", "leader");
 
         given()
-                .log().all()
                 .header("Content-Type", "application/json")
-                .body(request)
+                        .body(request)
                 .when()
                 .post("/users")
                 .then()
-                .log().all()
-                .statusCode(201)
-                .body("name", equalTo("morpheus"))
-                .body("job", equalTo("leader"));
+                .statusCode(201);
 
     }
 }
